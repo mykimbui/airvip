@@ -10,10 +10,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128203242) do
+ActiveRecord::Schema.define(version: 20161128203917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocked_days", force: :cascade do |t|
+    t.string   "date"
+    t.integer  "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_blocked_days_on_users_id", using: :btree
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string   "content"
+    t.string   "date"
+    t.integer  "price"
+    t.string   "status"
+    t.integer  "renter_id"
+    t.integer  "celeb_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_photos_on_users_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "rating"
+    t.integer  "renter_id"
+    t.integer  "celeb_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_languages", force: :cascade do |t|
+    t.integer  "users_id"
+    t.integer  "languages_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["languages_id"], name: "index_user_languages_on_languages_id", using: :btree
+    t.index ["users_id"], name: "index_user_languages_on_users_id", using: :btree
+  end
+
+  create_table "user_specialities", force: :cascade do |t|
+    t.integer  "users_id"
+    t.integer  "speciality_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["speciality_id"], name: "index_user_specialities_on_speciality_id", using: :btree
+    t.index ["users_id"], name: "index_user_specialities_on_users_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +95,22 @@ ActiveRecord::Schema.define(version: 20161128203242) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "city"
+    t.string   "address"
+    t.string   "role"
+    t.integer  "price_per_day"
+    t.string   "profile_picture"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "blocked_days", "users", column: "users_id"
+  add_foreign_key "photos", "users", column: "users_id"
+  add_foreign_key "user_languages", "languages", column: "languages_id"
+  add_foreign_key "user_languages", "users", column: "users_id"
+  add_foreign_key "user_specialities", "specialities"
+  add_foreign_key "user_specialities", "users", column: "users_id"
 end
