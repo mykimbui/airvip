@@ -1,2 +1,13 @@
 <h1>Dashboard#show</h1>
 <p>Find me in app/views/dashboard/show.html.erb</p>
+<ul><%= @bookings.each do |booking| %>
+  <li><h2><%= booking.celeb.first_name, booking.celeb.last_name %></h2></li>
+  <li><p><%= booking.content %></p></li>
+  <li><p><%= booking.price %></p></li>
+  <li><p><%= booking.status %></p></li>
+  <li><p><%= booking.date %></p></li>
+  <%= link_to "Approve this request", accept_dashboard_booking %>
+  <%= link_to "Decline this request", decline_dashboard_booking %>
+  <%= link_to "Cancel this request", cancel_dashboard_booking %>
+<% end %> </ul>
+
