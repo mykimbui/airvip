@@ -1,23 +1,34 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show, :edit, :update]
+
   def index
-    @profiles = User.where(params[:first_name, :last_name, :speciality])
+    varfist = params[:first_name]
+    @profiles = User.where(first_name: :varfirst)
+
+    varlast = params[:last_name]
+    @profiles = User.where(first_name: :varlast)
+
+    varspec = params[:speciality]
+    @profiles = User.where(first_name: :varspec)
+    
   end
 
   def show
-    @profile = User.find(params[:id])
   end
 
   def edit
-    @profile = User.find(params[:id])
   end
 
   def update
-    @profile = User.find(params[:id])
     @profile.update(profile_params)
     redirect_to profile_path(@profile)
   end
 
   private
+
+  def set_profile
+    @profile = User.find(params[:id])
+  end
 
   def profile_params
     params.require(:user).permit(:first_name, :last_name, :address, :email, :phone_number, :profile_picture, :city)
