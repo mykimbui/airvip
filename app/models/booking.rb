@@ -8,4 +8,12 @@ class Booking < ApplicationRecord
   validates :status, presence: true
   validates :date, presence: true
   validates :content, presence: true
+
+  def accept!
+    self.status = "Accepted"
+  end
+
+  def decline!
+    self.status = "Declined"
+  end
 end
