@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :set_booking, only: [:cancel, :accept, :decline]
+
   def show
     @bookings = current_user.bookings
   end
