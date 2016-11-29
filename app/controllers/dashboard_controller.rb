@@ -2,7 +2,8 @@ class DashboardController < ApplicationController
   before_action :set_booking, only: [:cancel, :accept, :decline]
 
   def show
-    @bookings = current_user.bookings
+    @renter_bookings = current_user.renter_bookings
+    @celeb_bookings = current_user.celeb_bookings
   end
 
   def accept
