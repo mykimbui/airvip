@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-     <%= simple_form_for @booking do |f| %>
+   <%= simple_form_for @booking, :url => profile_bookings_path(@celeb) do |f| %>
      <%= f.error_notification %>
      <%= month_calendar do |date| %>
      <%= date %>
