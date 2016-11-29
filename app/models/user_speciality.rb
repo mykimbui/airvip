@@ -1,4 +1,4 @@
 class UserSpeciality < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
   belongs_to :speciality
 end
