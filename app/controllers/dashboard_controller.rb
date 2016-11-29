@@ -8,16 +8,19 @@ class DashboardController < ApplicationController
   def accept
     @booking.accept!
     @booking.save
+    redirect_to dashboard_path
   end
 
   def cancel
-    @booking.destroy
+    @booking.cancel!
+    @booking.save
     redirect_to dashboard_path
   end
 
   def decline
     @booking.decline!
     @booking.save
+    redirect_to dashboard_path
   end
 
   private

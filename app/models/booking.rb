@@ -16,4 +16,8 @@ class Booking < ApplicationRecord
   def decline!
     self.status = "Declined"
   end
+
+  def cancel!
+    self.status = "Cancelled"
+  end
 end
