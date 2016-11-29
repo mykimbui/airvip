@@ -6,10 +6,10 @@ class ProfilesController < ApplicationController
     @profiles = User.where(first_name: :varfirst)
 
     varlast = params[:last_name]
-    @profiles = User.where(first_name: :varlast)
+    @profiles = User.where(last_name: :varlast)
 
     varspec = params[:speciality]
-    @profiles = User.where(first_name: :varspec)
+    @profiles = User.where(speciality: :varspec)
     
   end
 
