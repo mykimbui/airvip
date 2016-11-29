@@ -1,14 +1,14 @@
 <div class="container">
  <div class="row">
    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-   <%= simple_form_for @booking do |f| %>
+     <%= simple_form_for @booking do |f| %>
      <%= f.error_notification %>
      <%= month_calendar do |date| %>
      <%= date %>
-       <% end %>
-        <%= f.input :content, placeholder: "Explain your event" %>
-       <%= f.submit "Submit" %>
-   <% end %>
+     <% end %>
+     <%= f.input :content, placeholder: "Explain your event" %>
+     <%= f.submit "Submit" %>
+     <% end %>
    </div>
  </div>
 </div>
