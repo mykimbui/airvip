@@ -17,3 +17,7 @@ review = Review.new(renter: User.first, celeb: User.last, rating: 5, content:"ve
 review = Review.new(renter: User.first, celeb: User.first, rating: 1, content:"Boring")
 review = Review.new(renter: User.last, celeb: User.first, rating: 5, content:"extra")
 review = Review.new(renter: User.last, celeb: User.last, rating: 3, content:"Dirty")
+
+
+
+
