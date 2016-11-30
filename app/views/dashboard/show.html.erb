@@ -3,7 +3,7 @@
  <div class="row">
    <% @renter_bookings.each do |renter_booking| %>
    <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= render "card", booking: renter_booking %>
+     <%= render "card", renter_booking: renter_booking %>
    </div>
    <% end %>
  </div>
@@ -15,10 +15,7 @@
  <div class="row">
    <% @celeb_bookings.each do |celeb_booking| %>
    <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= render "card", booking: celeb_booking %>
-  <%= link_to "Approve", accept_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
-  <%= link_to "Decline", decline_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
-  <%= link_to "Cancel", cancel_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+     <%= render "cardceleb", celeb_booking: celeb_booking %>
    </div>
    <% end %>
  </div>

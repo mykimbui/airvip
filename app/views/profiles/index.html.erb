@@ -4,8 +4,8 @@
   <div class="row">
   <% @profiles.each do |profile| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card">
-      <div class="card-description">
+      <div>
+      <div>
 
         <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
         <%= cl_image_tag profile.profile_picture, height: 300, width: 400, crop: :fill %>
