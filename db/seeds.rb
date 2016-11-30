@@ -6,11 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings'
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
-
 User.destroy_all
-
 
 Speciality.create(name: "Actor")
 Speciality.create(name: "Singer")
@@ -46,8 +42,6 @@ roch = User.create!( email: "rv@gmail.com", first_name: 'Roch', last_name: 'Vois
 msardo = User.create!( email: "ms@gmail.com", first_name: 'Michel', last_name: 'Sardou', phone_number: '556468651', city:'paris' , address: '25, Rue Saint-Dominique', password: 'sardou123', role: 'Celebrity', price_per_day: 45, profile_picture: 'sardou.jpeg')
 shaki = User.create!( email: "sh@gmail.com", first_name: 'Shakira', last_name: 'Piqué', phone_number: '546131', city:'New York' , address: '1411 Broadway 39th Floor ', password: 'shakira123', role: 'Celebrity', price_per_day: 200, profile_picture: 'shakira.jpg')
 
-
-
 review = Review.create!(renter_id: anto.id, celeb_id: gkos.id, rating: 5, content:"very good")
 review1 = Review.create!(renter_id: gkos.id, celeb_id: shaki.id, rating: 1, content:"bad singer")
 review2 = Review.create!(renter_id: shaki.id, celeb_id: lagr.id, rating: 5, content:"Good coder")
@@ -56,3 +50,9 @@ review3 = Review.create!(renter_id: clem.id, celeb_id: roch.id, rating: 5, conte
 10.times do
  UserSpeciality.create(user_id:User.all.sample.id,speciality_id:Speciality.all.sample.id)
 end
+
+booking_a = Booking.create!(content: "party at Co.station", date: "20/12/2016", price: '32', status: nil, renter_id: anto.id, celeb_id: gkos.id )
+booking_b = Booking.create!(content: "sing for me", date: "20/12/2016", price: '55', status: nil, renter_id: clem.id, celeb_id: roch.id )
+booking_c = Booking.create!(content: "dance for me", date: "12/01/2017", price: '43', status: nil, renter_id: gkos.id, celeb_id: shaki.id )
+booking_d = Booking.create!(content: "DJ at my party", date: "20/10/2017", price: '27', status: nil, renter_id: nana.id , celeb_id: msardo.id )
+booking_e = Booking.create!(content: "cook for me", date: "20/11/2017", price: '27', status: nil, renter_id: gord.id, celeb_id: phile.id )
