@@ -1,4 +1,25 @@
+  # This file should contain all the record creation needed to seed the databa
+# The data can then be loaded with the rails db:seed command (or created along
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings'
+#   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
 User.destroy_all
+
+
+Speciality.create(name: "Actor")
+Speciality.create(name: "Singer")
+Speciality.create(name: "Cook")
+Speciality.create(name: "Dancer")
+Speciality.create(name: "Writer")
+Speciality.create(name: "Entertainer")
+Speciality.create(name: "President")
+Speciality.create(name: "TA")
 
 anto = User.create!( email: "al@gmail.com", first_name: 'Anthony', last_name: 'Limère', phone_number: '652540', city:'bruxelles' , address: '5 place st gudule', password: 'limere123', role: 'Celebrity', price_per_day: 50, profile_picture: 'anthony-limere.jpeg')
 gkos = User.create!( email: "gk@gmail.com", first_name: 'George', last_name: 'Kosmopoulos', phone_number: '565879846', city:'bruxelles' , address: '5 place st gudule', password: 'kosmopoulos123', role: 'Celebrity', price_per_day: 50, profile_picture: 'george_kosmopoulos.jpg')
@@ -23,7 +44,7 @@ jluc = User.create!( email: "jll@gmail.com", first_name: 'Jean-Luc', last_name: 
 jcl = User.create!( email: "jc@gmail.com", first_name: 'Julien', last_name: 'Clerc', phone_number: '656426', city:'Paris' , address: '20, Avenue Rapp', password: 'clerc123', role: 'Celebrity', price_per_day: 60, profile_picture: 'julien_clerc.jpg')
 roch = User.create!( email: "rv@gmail.com", first_name: 'Roch', last_name: 'Voisine', phone_number: '4564648454', city:'Montreal' , address: '256, Rue san-Antonio', password: 'roch123', role: 'Celebrity', price_per_day: 60, profile_picture: 'roch_voisine.jpeg')
 msardo = User.create!( email: "ms@gmail.com", first_name: 'Michel', last_name: 'Sardou', phone_number: '556468651', city:'paris' , address: '25, Rue Saint-Dominique', password: 'sardou123', role: 'Celebrity', price_per_day: 45, profile_picture: 'sardou.jpeg')
-shaki = User.create!( email: "sh@gmail.com", first_name: 'Shakira', last_name: '', phone_number: '546131', city:'New York' , address: '1411 Broadway 39th Floor ', password: 'shakira123', role: 'Celebrity', price_per_day: 200, profile_picture: 'shakira.jpg')
+shaki = User.create!( email: "sh@gmail.com", first_name: 'Shakira', last_name: 'Piqué', phone_number: '546131', city:'New York' , address: '1411 Broadway 39th Floor ', password: 'shakira123', role: 'Celebrity', price_per_day: 200, profile_picture: 'shakira.jpg')
 
 
 
@@ -31,7 +52,6 @@ review = Review.create!(renter_id: anto.id, celeb_id: gkos.id, rating: 5, conten
 review1 = Review.create!(renter_id: gkos.id, celeb_id: shaki.id, rating: 1, content:"bad singer")
 review2 = Review.create!(renter_id: shaki.id, celeb_id: lagr.id, rating: 5, content:"Good coder")
 review3 = Review.create!(renter_id: clem.id, celeb_id: roch.id, rating: 5, content:"HAAAAAAA I'm completly in love")
-
 
 10.times do
  UserSpeciality.create(user_id:User.all.sample.id,speciality_id:Speciality.all.sample.id)
