@@ -8,7 +8,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <%= form_tag '#', method: :get do %>
+    <%= form_tag '/profiles', method: :get do %>
       <%= label_tag 'Search for a Vip' %>
       <%= text_field_tag 'fist_name', nil, placeholder: "First Name" %>
       <%= text_field_tag 'last_name', nil, placeholder: "Last Name" %>
