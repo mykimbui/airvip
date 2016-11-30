@@ -1,0 +1,15 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/500/400');">
+  <div class="card-category"><%= celeb_booking.date %></div>
+  <div class="card-description">
+    <h2><%= celeb_booking.celeb.first_name %><%= celeb_booking.celeb.last_name %></h2>
+    <p>[<%= celeb_booking.status %>] - <%= celeb_booking.content %></p>
+  </div>
+  <div class="card-user avatar"><%= celeb_booking.celeb.price_per_day %>€</div>
+  <%#= link_to "", restaurant_path(restaurant), class: "card-link" %>
+</div>
+<div>
+  <%= link_to "Approve", accept_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+  <%= link_to "Decline", decline_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+  <%#= link_to "Cancel", cancel_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+  <%#= link_to "Delete", profile_booking_path(booking.id), class: "btn btn-danger" %>
+</div>
