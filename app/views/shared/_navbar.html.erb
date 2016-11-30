@@ -6,24 +6,6 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <%= form_tag '/profiles', method: :get do %>
-      <%= label_tag 'Search for a Vip' %>
-      <%= text_field_tag 'first_name', nil, placeholder: "First Name" %>
-      <%= text_field_tag 'last_name', nil, placeholder: "Last Name" %>
-
-      <%= select_tag "search_category",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality" %>
-      <%= submit_tag "OK" %>
-    <% end %>
-
-
-
-
-
-
-
-
     <!-- <form action="/profiles" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search for a Vip">
       <%#= select_tag "category",options_for_select(['All', 'Co', 'Bought', 'View', 'Top API']), prompt: "Select something" %>

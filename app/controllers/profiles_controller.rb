@@ -11,10 +11,11 @@ class ProfilesController < ApplicationController
 
 #    varspec = params[:speciality]
 #    @profiles = User.where(speciality: :varspec)
-
   end
 
   def show
+    @profile = User.find(params[:id])
+    @profile_coordinates = { lat: @flat.latitude, lng: @flat.longitude }
   end
 
   def edit

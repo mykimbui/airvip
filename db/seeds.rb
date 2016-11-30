@@ -8,6 +8,7 @@
 
 User.destroy_all
 
+
 Speciality.create(name: "Actor")
 Speciality.create(name: "Singer")
 Speciality.create(name: "Cook")
