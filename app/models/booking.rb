@@ -6,7 +6,7 @@ class Booking < ApplicationRecord
   # validates :celeb_id, presence: true
   # validates :price, presence: true
   # validates :status, presence: true
-  # validates :date, presence: true
+  validates :date, presence: true
   validates :content, presence: true
 
   def accept!

@@ -3,12 +3,16 @@
    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
    <%= simple_form_for @booking, :url => profile_bookings_path(@celeb) do |f| %>
      <%= f.error_notification %>
-     <%= month_calendar do |date| %>
-     <%= date %>
-     <% end %>
+     <%= f.input :date, placeholder: "Pick a date", input_html: {class: 'datepicker'}  %>
      <%= f.input :content, placeholder: "Explain your event" %>
      <%= f.submit "Submit" %>
      <% end %>
    </div>
  </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>

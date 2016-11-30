@@ -1,21 +1,27 @@
-<ul><% @renter_bookings.each do |renter_booking| %>
-  <li><h2><%= renter_booking.celeb.first_name %> <%= renter_booking.celeb.last_name %></h2></li>
-  <li><p><%= renter_booking.content %></p></li>
-  <li><p><%= renter_booking.price %></p></li>
-  <li><p><%= renter_booking.status %></p></li>
-  <li><p><%= renter_booking.date %></p></li>
-  <%= link_to "Approve this request", accept_dashboard_booking_path(renter_booking.id) %>
-  <%= link_to "Decline this request", decline_dashboard_booking_path(renter_booking.id) %>
-  <%= link_to "Cancel this request", cancel_dashboard_booking_path(renter_booking.id) %>
-<% end %> </ul>
+<h1 class="text-center">Your bookings of celebrities</h1>
+<div class="container">
+ <div class="row">
+   <% @renter_bookings.each do |renter_booking| %>
+   <div class="col-xs-12 col-sm-6 col-md-3">
+     <%= render "card", booking: renter_booking %>
+   </div>
+   <% end %>
+ </div>
+ <%#= link_to 'Back', profile_path, class: "btn btn-danger" %>
+</div>
 
-<ul><% @celeb_bookings.each do |celeb_booking| %>
-  <li><h2><%= celeb_booking.celeb.first_name %> <%= celeb_booking.celeb.last_name %></h2></li>
-  <li><p><%= celeb_booking.content %></p></li>
-  <li><p><%= celeb_booking.price %></p></li>
-  <li><p><%= celeb_booking.status %></p></li>
-  <li><p><%= celeb_booking.date %></p></li>
-  <%= link_to "Approve this request", accept_dashboard_booking_path(celeb_booking.id) %>
-  <%= link_to "Decline this request", decline_dashboard_booking_path(celeb_booking.id) %>
-  <%= link_to "Cancel this request", cancel_dashboard_booking_path(celeb_booking.id) %>
-<% end %> </ul>
+<h1 class="text-center">Booked by</h1>
+<div class="container">
+ <div class="row">
+   <% @celeb_bookings.each do |celeb_booking| %>
+   <div class="col-xs-12 col-sm-6 col-md-3">
+     <%= render "card", booking: celeb_booking %>
+  <%= link_to "Approve", accept_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+  <%= link_to "Decline", decline_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+  <%= link_to "Cancel", cancel_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
+   </div>
+   <% end %>
+ </div>
+ <%#= link_to 'Back', profile_path, class: "btn btn-danger" %>
+</div>
+

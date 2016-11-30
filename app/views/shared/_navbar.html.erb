@@ -8,9 +8,9 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <%= form_tag '#', method: :get do %>
+    <%= form_tag '/profiles', method: :get do %>
       <%= label_tag 'Search for a Vip' %>
-      <%= text_field_tag 'fist_name', nil, placeholder: "First Name" %>
+      <%= text_field_tag 'first_name', nil, placeholder: "First Name" %>
       <%= text_field_tag 'last_name', nil, placeholder: "Last Name" %>
 
       <%= select_tag "search_category",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality" %>
@@ -78,7 +78,7 @@
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Are you a ViP ?"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

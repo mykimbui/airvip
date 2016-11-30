@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controller: { registrations: 'registrations'}
   root to: 'pages#home'
 
   resources :profiles, only: [:index, :show, :edit, :update] do
     resources :reviews, only: [:new, :create, :destroy]
     resources :bookings, only: [:new, :create, :destroy]
+    post '/new_speciality', to: 'profiles#new_speciality'
   end
 
   resource :dashboard, only: [:show], controller: "dashboard" do
