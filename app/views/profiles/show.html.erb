@@ -1,7 +1,15 @@
-<h2><%= @profile.first_name %> <%= @profile.last_name %></h2>
+<h2><%= @profile.first_name.capitalize %> <%= @profile.last_name.capitalize %></h2>
 
 
   <%= cl_image_tag @profile.profile_picture, height: 300, width: 400, crop: :fill %>
+
+<p><b>E-mail: </b><%= @profile.email %></p>
+<p><b>Phone number: </b><%= @profile.phone_number %></p>
+<p><b>Address: </b><%= @profile.address %></p>
+<p><b>Role: </b><%= @profile.role %></p>
+<p><b>Price: </b><%= @profile.price_per_day %> <small>EUR</small> / hour</p>
+
+
 
 
 
