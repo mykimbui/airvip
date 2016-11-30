@@ -1,2 +1,8 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+
+<h3>Change your profile picture</h3>
+
+<%= simple_form_for @profile, url: profile_path do |f| %>
+  <%= f.input :profile_picture %>
+  <%= f.input :profile_picture_cache, as: :hidden %>
+  <%= f.submit %>
+<% end %>

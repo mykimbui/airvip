@@ -8,8 +8,8 @@ class ProfilesController < ApplicationController
     varlast = params[:last_name]
     @profiles = User.where(last_name: :varlast)
 
-    varspec = params[:speciality]
-    @profiles = User.where(speciality: :varspec)
+#    varspec = params[:speciality]
+#    @profiles = User.where(speciality: :varspec)
     
   end
 
@@ -31,6 +31,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit(:first_name, :last_name, :address, :email, :phone_number, :profile_picture, :city)
+    params.require(:user).permit(:first_name, :last_name, :address, :email, :phone_number, :profile_picture, :profile_picture_cache, :city)
   end
 end
