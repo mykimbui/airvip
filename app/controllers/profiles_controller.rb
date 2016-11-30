@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
 #    varspec = params[:speciality]
 #    @profiles = User.where(speciality: :varspec)
-    
+
   end
 
   def show
