@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     @profiles = User.where(first_name: varfirst)
 
     varlast = params[:last_name]
-    @profiles = @profiles + User.where(last_name: varlast) 
+    @profiles = @profiles + User.where(last_name: varlast)
 
 #    varspec = params[:speciality]
 #    @profiles = User.where(speciality: :varspec)
@@ -25,6 +25,12 @@ class ProfilesController < ApplicationController
     redirect_to profile_path(@profile)
   end
 
+  def new_speciality
+    @profile = User.find(params[:profile_id])
+    @profile.specialities.create!(speciality_params)
+    redirect_to profile_path(@profile)
+  end
+
   private
 
   def set_profile
@@ -33,5 +39,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:user).permit(:first_name, :last_name, :address, :email, :phone_number, :profile_picture, :profile_picture_cache, :city, :user_specialities, :role, :price_per_day)
+  end
+
+  def speciality_params
+    params.require(:speciality).permit(:name)
   end
 end
