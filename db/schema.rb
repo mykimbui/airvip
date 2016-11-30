@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128203917) do
+ActiveRecord::Schema.define(version: 20161130103615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(version: 20161128203917) do
   end
 
   create_table "user_specialities", force: :cascade do |t|
-    t.integer  "users_id"
-    t.integer  "speciality_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.integer  "speciality_id"
     t.index ["speciality_id"], name: "index_user_specialities_on_speciality_id", using: :btree
-    t.index ["users_id"], name: "index_user_specialities_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_user_specialities_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,6 +111,4 @@ ActiveRecord::Schema.define(version: 20161128203917) do
   add_foreign_key "photos", "users", column: "users_id"
   add_foreign_key "user_languages", "languages", column: "languages_id"
   add_foreign_key "user_languages", "users", column: "users_id"
-  add_foreign_key "user_specialities", "specialities"
-  add_foreign_key "user_specialities", "users", column: "users_id"
 end
