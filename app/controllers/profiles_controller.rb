@@ -2,11 +2,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def index
-    varfist = params[:first_name]
-    @profiles = User.where(first_name: :varfirst)
+
+    varfirst = params[:first_name]
+    @profiles = User.where(first_name: varfirst)
 
     varlast = params[:last_name]
-    @profiles = User.where(last_name: :varlast)
+    @profiles = @profiles + User.where(last_name: varlast) 
 
 #    varspec = params[:speciality]
 #    @profiles = User.where(speciality: :varspec)
