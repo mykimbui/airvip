@@ -3,9 +3,8 @@
 
   <%= cl_image_tag @profile.profile_picture, height: 300, width: 400, crop: :fill %>
 
-<ul>
-  <% @profile.reviews.each do |review| %>
-    <li><%= review.content %>, <%= review.rating %></li>
-  <% end %>
-</ul>
+
+
+<p><%= link_to "book", new_profile_booking_path(@profile), method: :get %> <%= link_to "edit", edit_profile_path(@profile), method: :get %></p>
+
 
