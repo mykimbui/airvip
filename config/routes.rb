@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show, :edit, :update] do
     resources :reviews, only: [:new, :create, :destroy]
     resources :bookings, only: [:new, :create, :destroy]
+    post '/new_speciality', to: 'profiles#new_speciality'
   end
 
   resource :dashboard, only: [:show], controller: "dashboard" do
