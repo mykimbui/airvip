@@ -1,0 +1,5 @@
+[0G[1] pry(main)> exit[K
+[2] pry(main)> qqaq
+NameError: undefined local variable or method `qqaq' for main:Object
+from (pry):1:in `<main>'
+[3] pry(main)> 
