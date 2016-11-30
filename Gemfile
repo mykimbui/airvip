@@ -19,6 +19,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'carrierwave'
 gem "simple_calendar", "~> 2.0"
+gem 'bootstrap-datepicker-rails'
+
 
 group :development, :test do
   gem 'binding_of_caller'
