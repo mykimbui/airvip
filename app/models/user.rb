@@ -22,7 +22,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role, presence: true, inclusion: { in: ROLES }
   validates :city, presence: true
-  validates :profile_picture, presence: true
   validates :phone_number, presence: true
   validates :address, presence: true
 end
