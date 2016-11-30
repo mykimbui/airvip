@@ -13,7 +13,6 @@ toto = User.create!( email: "toto@toto.com", first_name: 'toto', last_name: 'tot
 fox = User.create!( email: "fox@gmail.com", first_name: 'francois', last_name: 'Ox', phone_number: '2564618', city:'bxl' , address: 'rur dxfg 23', password: '567891', role: 'renter', price_per_day: 76, profile_picture: 'fox.jpeg')
 boumbo = User.create!( email: "boumbo@boumbo.com", first_name: 'boum', last_name: 'bo', phone_number: '56565656', city:'bxl' , address: 'rur dxfg 23', password: '912345', role: 'renter', price_per_day: 76, profile_picture: 'boumbo.jpeg')
 
-
 review = Review.new(renter: User.first, celeb: User.last, rating: 5, content:"very good")
 review = Review.new(renter: User.first, celeb: User.first, rating: 1, content:"Boring")
 review = Review.new(renter: User.last, celeb: User.first, rating: 5, content:"extra")
