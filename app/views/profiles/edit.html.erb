@@ -7,11 +7,8 @@
   <%= f.input :address, placeholder: "Your address."%>
   <%= f.input :email, placeholder: "Your e-mail."%>
   <%= f.input :phone_number, placeholder: "Your phone number."%>
+  <%= f.input :price_per_day, placeholder: "Your price per day."%>
   <%= f.input :role, collection: User::ROLES, prompt: "Choose one"  %>
-
-
-
-
   <%= f.input :profile_picture %>
   <%= f.input :profile_picture_cache, as: :hidden %>
   <%= f.submit %>
