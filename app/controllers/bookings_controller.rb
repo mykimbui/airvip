@@ -1,13 +1,14 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:destroy]
-  before_action :set_celeb, only: [:new]
+  before_action :set_booking, only: [:destroy, :accept, :cancel, :decline]
+  before_action :set_celeb, only: [:new, :create]
   def new
-
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.celeb = @celeb
+    @booking.renter = current_user
     if @booking.save
       redirect_to dashboard_path
     else
@@ -20,8 +21,25 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def accept
+    @booking.accept!
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def cancel
+    @booking.cancel!
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def decline
+    @booking.decline!
+    @booking.save
+    redirect_to dashboard_path
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])
     end
@@ -30,7 +48,6 @@ class BookingsController < ApplicationController
       @celeb = User.find(params[:profile_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
       params.require(:booking).permit(:price, :status, :date, :content, :renter_id, :celeb_id)
     end
