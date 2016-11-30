@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :celeb_bookings, class_name: 'Booking', foreign_key: 'celeb_id'
   has_many :blocked_days
   has_many :languages, through: :user_languages
+  has_many :user_specialities
   has_many :specialities, through: :user_specialities
   has_many :photos
 
