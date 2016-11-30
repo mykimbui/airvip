@@ -1,9 +1,10 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/500/400');">
-  <div class="card-category"><%#= booking.category %> Booking</div>
+  <div class="card-category"> Booking</div>
   <div class="card-description">
     <h2><%= booking.celeb.first_name %><%= booking.celeb.last_name %></h2>
     <p>[<%= booking.status %>] - <%= booking.content %></p>
   </div>
+  <div class="card-user avatar"><%= booking.price %> 70€</div>
   <%#= link_to "", restaurant_path(restaurant), class: "card-link" %>
 </div>
 <div>
