@@ -32,4 +32,3 @@ jcl = User.create!( email: "jc@gmail.com", first_name: 'Julien', last_name: 'Cle
 roch = User.create!( email: "rv@gmail.com", first_name: 'Roch', last_name: 'Voisine', phone_number: '4564648454', city:'Montreal' , address: '256, Rue san-Antonio', password: 'roch123', role: 'Celebrity', price_per_day: 60, profile_picture: 'roch_voisine.jpeg')
 msardo = User.create!( email: "ms@gmail.com", first_name: 'Michel', last_name: 'Sardou', phone_number: '556468651', city:'paris' , address: '25, Rue Saint-Dominique', password: 'sardou123', role: 'Celebrity', price_per_day: 45, profile_picture: 'sardou.jpeg')
 shaki = User.create!( email: "sh@gmail.com", first_name: 'Shakira', last_name: '', phone_number: '546131', city:'New York' , address: '1411 Broadway 39th Floor ', password: 'shakira123', role: 'Celebrity', price_per_day: 200, profile_picture: 'shakira.jpg')
-

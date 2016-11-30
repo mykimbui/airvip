@@ -20,6 +20,8 @@ gem 'autoprefixer-rails'
 gem 'carrierwave'
 gem "simple_calendar", "~> 2.0"
 gem 'bootstrap-datepicker-rails'
+gem "geocoder"
+
 
 
 group :development, :test do
