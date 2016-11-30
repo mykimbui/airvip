@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ROLES = %w(Celebrity Lookalike Renter)
+
   mount_uploader :profile_picture, PhotoUploader
 
   has_many :renter_reviews, class_name: 'Review', foreign_key: 'renter_id'
@@ -18,7 +20,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :role, presence: true
+  validates :role, presence: true, inclusion: { in: ROLES }
   validates :city, presence: true
   validates :profile_picture, presence: true
   validates :phone_number, presence: true
