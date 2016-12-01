@@ -16,8 +16,7 @@
 <% end %>
 
 <h2>Add specialties</h2>
-
-<%= simple_form_for [ @profile, Speciality.new ], url: profile_new_speciality_path(@profile), method: :post do |f| %>
-  <%= f.input :name, collection: Speciality::SPECIALITIES, prompt: "Choose one"  %>
+<%= simple_form_for UserSpeciality.new , url: profile_new_speciality_path(@profile), method: :post do |f| %>
+  <%= f.association :speciality %>
   <%= f.submit %>
 <% end %>
