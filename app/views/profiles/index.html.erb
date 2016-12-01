@@ -3,9 +3,7 @@
 <div class="container">
   <div class="row">
   <% @profiles.each do |profile| %>
-    <div class="col-xs-12 col-sm-4">
-      <div>
-      <div>
+    <div class="col-xs-6">
 
         <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
         <% avatar_url = current_user.facebook_picture_url || profile.profile_picture %>
@@ -15,9 +13,36 @@
         <p><b>E-mail: </b><%= profile.email %></p>
         <p><%= link_to "show", profile_path(profile), method: :get %></p>
 
-      </div>
-      </div>
-    </div>
   <% end %>
+
+    </div>
+
+
+  <div class="col-xs-6" id="map" style="width: 50%; height: 300px;"></div>
+
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        });
+      <% end %>
+    <% end %>
+
+  </div>
+
   </div>
 </div>
+
+
+
+
