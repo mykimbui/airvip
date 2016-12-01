@@ -19,9 +19,9 @@ class ProfilesController < ApplicationController
     else
       @profiles
     end
-    
+
     @profiles = @profiles.uniq
-    
+
     @profiles_a = User.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@profiles_a) do |profile_a, marker|
@@ -32,8 +32,10 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = User.find(params[:id])
-    @alert_message = "You are viewing #{@user.name}"
+    #@alert_message = "You are viewing #{@user.name}"
     @profile_coordinates = { lat: @profile.latitude, lng: @profile.longitude }
+    @reviews = @profile.celeb_reviews
+
   end
 
   def edit
