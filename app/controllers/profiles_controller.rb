@@ -12,37 +12,48 @@ class ProfilesController < ApplicationController
 
 #    varspec = params[:speciality]
 #    @profiles = User.where(speciality: :varspec)
-  end
 
-  def show
-    @profile = User.find(params[:id])
-  end
+    @profiles_a = User.where.not(latitude: nil, longitude: nil)
 
-  def edit
-  end
+    @hash = Gmaps4rails.build_markers(@profiles_a) do |profile_a, marker|
+      marker.lat profile_a.latitude
+      marker.lng profile_a.longitude
+    end
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
 
-  def update
-    @profile.update(profile_params)
-    redirect_to profile_path(@profile)
-  end
+    def show
+      @profile = User.find(params[:id])
+      @alert_message = "You are viewing #{@user.name}"
+      @profile_coordinates = { lat: @profile.latitude, lng: @profile.longitude }
 
-  def new_speciality
-    @profile = User.find(params[:profile_id])
-    @profile.specialities.create!(speciality_params)
-    redirect_to profile_path(@profile)
-  end
+    end
 
-  private
+    def edit
+    end
 
-  def set_profile
-    @profile = User.find(params[:id])
-  end
+    def update
+      @profile.update(profile_params)
+      redirect_to profile_path(@profile)
+    end
 
-  def profile_params
-    params.require(:user).permit(:first_name, :last_name, :address, :email, :phone_number, :profile_picture, :profile_picture_cache, :city, :user_specialities, :role, :price_per_day)
-  end
+    def new_speciality
+      @profile = User.find(params[:profile_id])
+      @profile.specialities.create!(speciality_params)
+      redirect_to profile_path(@profile)
+    end
 
-  def speciality_params
-    params.require(:speciality).permit(:name)
+    private
+
+    def set_profile
+      @profile = User.find(params[:id])
+    end
+
+    def profile_params
+      params.require(:user).permit(:first_name, :last_name, :address, :email, :phone_number, :profile_picture, :profile_picture_cache, :city, :user_specialities, :role, :price_per_day)
+    end
+
+    def speciality_params
+      params.require(:speciality).permit(:name)
+    end
   end
-end

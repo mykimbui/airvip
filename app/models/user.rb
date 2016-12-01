@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   ROLES = %w(Celebrity Lookalike Renter)
 
-  # geocoded_by :address
-  # after_validation :geocode, if: :address_changed?
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   mount_uploader :profile_picture, PhotoUploader
 
