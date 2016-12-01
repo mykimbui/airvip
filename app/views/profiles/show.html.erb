@@ -18,14 +18,24 @@
 <p><%= link_to "book", new_profile_booking_path(@profile), method: :get %></p>
 
 <p><%= link_to "edit", edit_profile_path(@profile), method: :get if @profile == current_user %></p>
-
+<% unless @reviews_renter.nil? %>
 <ul>
-
-<%@reviews.each do |rev| %>
+<%@reviews_renter.each do |rev| %>
  <li>
  <%= rev.content%>
   <%= rev.rating%>
   <% end %>
 </li>
 </ul>
+<% end %>
+<% unless @reviews_celeb.nil? %>
 
+<ul>
+<%@reviews_celeb.each do |rev| %>
+ <li>
+ <%= rev.content%>
+  <%= rev.rating%>
+  <% end %>
+</li>
+</ul>
+<% end %>

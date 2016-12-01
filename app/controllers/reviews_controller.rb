@@ -10,9 +10,9 @@ class ReviewsController < ApplicationController
     @profile = User.find(params[:profile_id])
     @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @profile.role == 'Celebrity' ? @review.celeb = @profile : review.renter = @profile
+    @profile.role == 'Celebrity' ? @review.celeb = @profile : @review.renter = @profile
     if @review.save
-      redirect_to profile_path(@profile)
+      redirect_to profile_path(@review.celeb)
     else
       render "profiles/show"
     end

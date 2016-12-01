@@ -12,10 +12,12 @@ class ProfilesController < ApplicationController
     varspec = params[:specialities]
     if varspec != ""
       spec = Speciality.where(name: varspec).uniq
+      if spec.nil?
       user_list = UserSpeciality.where(speciality_id: spec.first.id)
       @profiles = @profiles + user_list.map do |row|
         User.find(row.user_id)
       end
+    end
     else
       @profiles
     end
@@ -36,8 +38,16 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id])
     #@alert_message = "You are viewing #{@user.name}"
     @profile_coordinates = { lat: @profile.latitude, lng: @profile.longitude }
-    @reviews = @profile.celeb_reviews
-
+    # @booking = @profile.celeb_bookings
+    # @reviews_celeb = @booking.map do |book|
+    #     book.reviews
+    # end
+    # @booking = @profile.renter_bookings
+    # @reviews_renter = @booking.map do |book|
+    #     book.reviews
+    # end
+   @reviews_celeb = Review.where(celeb_id: @þrofile)
+   @reviews_renter = Review.where(renter_id: @þrofile)
   end
 
   def edit
