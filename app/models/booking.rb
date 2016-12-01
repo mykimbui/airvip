@@ -20,4 +20,8 @@ class Booking < ApplicationRecord
   def cancel!
     self.status = "Cancelled"
   end
+
+  def completed
+    self.status = "Completed"
+  end
 end
