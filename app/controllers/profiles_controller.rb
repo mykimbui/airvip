@@ -9,16 +9,26 @@ class ProfilesController < ApplicationController
     varlast = params[:last_name]
     @profiles = @profiles + User.where(last_name: varlast)
 
-#    varspec = params[:speciality]
-#    @profiles = User.where(speciality: :varspec)
+    varspec = params[:specialities]
+    if varspec != ""
+      spec = Speciality.where(name: varspec).uniq
+      user_list = UserSpeciality.where(speciality_id: spec.first.id)
+      @profiles = @profiles + user_list.map do |row|
+        User.find(row.user_id)
+      end
+    else
+      @profiles
+    end
+    @profiles = @profiles.uniq
   end
 
   def show
     @profile = User.find(params[:id])
-    @profile_coordinates = { lat: @flat.latitude, lng: @flat.longitude }
+#    @profile_coordinates = { lat: @flat.latitude, lng: @flat.longitude }
   end
 
   def edit
+     @spec = @profile.user_specialities.build()
   end
 
   def update
@@ -28,7 +38,8 @@ class ProfilesController < ApplicationController
 
   def new_speciality
     @profile = User.find(params[:profile_id])
-    @profile.specialities.create!(speciality_params)
+    userspec = @profile.user_specialities.build(speciality_params)
+    userspec.save
     redirect_to profile_path(@profile)
   end
 
@@ -43,6 +54,6 @@ class ProfilesController < ApplicationController
   end
 
   def speciality_params
-    params.require(:speciality).permit(:name)
+    params.require(:user_speciality).permit(:speciality_id)
   end
 end
