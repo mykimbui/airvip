@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-
     varfirst = params[:first_name]
     @profiles = User.where(first_name: varfirst)
 
@@ -19,27 +19,36 @@ class ProfilesController < ApplicationController
     else
       @profiles
     end
+    
     @profiles = @profiles.uniq
+    
+    @profiles_a = User.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@profiles_a) do |profile_a, marker|
+      marker.lat profile_a.latitude
+      marker.lng profile_a.longitude
+    end
   end
 
   def show
     @profile = User.find(params[:id])
-#    @profile_coordinates = { lat: @flat.latitude, lng: @flat.longitude }
+    @alert_message = "You are viewing #{@user.name}"
+    @profile_coordinates = { lat: @profile.latitude, lng: @profile.longitude }
   end
 
   def edit
      @spec = @profile.user_specialities.build()
   end
 
-  def update
-    @profile.update(profile_params)
-    redirect_to profile_path(@profile)
-  end
-
   def new_speciality
     @profile = User.find(params[:profile_id])
     userspec = @profile.user_specialities.build(speciality_params)
     userspec.save
+    redirect_to profile_path(@profile)
+  end
+
+  def update
+    @profile.update(profile_params)
     redirect_to profile_path(@profile)
   end
 
