@@ -39,6 +39,12 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def completed
+    @booking.completed
+    @booking.save
+    redirect_to new_profile_review_path(@celeb)
+  end
+
   private
     def set_booking
       @booking = Booking.find(params[:id])
