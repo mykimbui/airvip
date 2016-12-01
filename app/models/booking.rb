@@ -22,7 +22,7 @@ class Booking < ApplicationRecord
     self.status = "Cancelled"
   end
 
-  def completed
+  def completed!
     self.status = "Completed"
   end
 end
