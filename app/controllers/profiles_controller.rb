@@ -22,9 +22,11 @@ class ProfilesController < ApplicationController
 
     @profiles = @profiles.uniq
 
-    @profiles_a = User.where.not(latitude: nil, longitude: nil)
 
-    @hash = Gmaps4rails.build_markers(@profiles_a) do |profile_a, marker|
+    @profiles_a = User.where(latitude: nil, longitude: nil)
+    @ok = @profiles + @profiles_a
+
+    @hash = Gmaps4rails.build_markers(@ok) do |profile_a, marker|
       marker.lat profile_a.latitude
       marker.lng profile_a.longitude
     end
