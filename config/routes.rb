@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :profiles, only: [:index, :show, :edit, :update] do
-    resources :reviews, only: [:new, :create, :destroy]
-    resources :bookings, only: [:new, :create, :destroy]
+
+    resources :bookings, only: [:new, :create, :destroy] do
+        resources :reviews, only: [:new, :create, :destroy]
+    end
     post '/new_speciality', to: 'profiles#new_speciality'
   end
 

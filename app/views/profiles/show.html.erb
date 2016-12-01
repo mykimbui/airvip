@@ -15,9 +15,17 @@
   </ul>
 </p>
 
-<p><%= link_to "book", new_profile_booking_path(@profile), method: :get %></p> 
-
+<p><%= link_to "book", new_profile_booking_path(@profile), method: :get %></p>
 
 <p><%= link_to "edit", edit_profile_path(@profile), method: :get if @profile == current_user %></p>
 
+<ul>
+
+<%@reviews.each do |rev| %>
+ <li>
+ <%= rev.content%>
+  <%= rev.rating%>
+  <% end %>
+</li>
+</ul>
 
