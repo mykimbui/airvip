@@ -1,6 +1,6 @@
 <h2><%= @profile.first_name.capitalize %> <%= @profile.last_name.capitalize %></h2>
-
-<%= cl_image_tag @profile.profile_picture, height: 300, width: 400, crop: :fill %>
+<% avatar_url = current_user.facebook_picture_url || @profile.profile_picture %>
+<%= cl_image_tag avatar_url, height: 300, width: 400, crop: :fill %>
 
 <p><b>E-mail: </b><%= @profile.email %></p>
 <p><b>Phone number: </b><%= @profile.phone_number %></p>
@@ -15,7 +15,7 @@
   </ul>
 </p>
 
-<p><%= link_to "book", new_profile_booking_path(@profile), method: :get %></p> 
+<p><%= link_to "book", new_profile_booking_path(@profile), method: :get %></p>
 
 
 <p><%= link_to "edit", edit_profile_path(@profile), method: :get if @profile == current_user %></p>

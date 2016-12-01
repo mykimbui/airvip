@@ -3,11 +3,10 @@
     <h1>WELCOME</h1>
     <p>Rent celebrities or their lookalikes for your own event!</p>
     <%= form_tag '/profiles', method: :get do %>
-    <%= label_tag 'Search for a Vip' %>
+    <%= label_tag 'Search for a VIP' %>
     <div class="input">
       <%= text_field_tag 'first_name', nil, placeholder: "First Name" %>
       <%= text_field_tag 'last_name', nil, placeholder: "Last Name" %>
-
       <%= select_tag "search_category",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality" %>
     </div>
     <%= submit_tag "Submit", class: "btn btn-primary" %>
@@ -28,7 +27,6 @@
           <h2><%= user.first_name %> <%= user.last_name %></h2>
           <p><%= user.role %>
           <p><%= link_to "show",  profile_path(user), method: :get %></p>
-
 
         </div>
       </div>

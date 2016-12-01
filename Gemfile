@@ -21,7 +21,7 @@ gem 'carrierwave'
 gem "simple_calendar", "~> 2.0"
 gem 'bootstrap-datepicker-rails'
 gem "geocoder"
-
+gem 'omniauth-facebook'
 
 
 group :development, :test do

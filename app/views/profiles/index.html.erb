@@ -8,12 +8,12 @@
       <div>
 
         <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
-        <%= cl_image_tag profile.profile_picture, height: 300, width: 400, crop: :fill %>
+        <% avatar_url = current_user.facebook_picture_url || profile.profile_picture %>
+        <%= cl_image_tag avatar_url, height: 300, width: 400, crop: :fill %>
         <p><b>Role: </b><%= profile.role %></p>
         <p><b>Address: </b><%= profile.address %></p>
         <p><b>E-mail: </b><%= profile.email %></p>
         <p><%= link_to "show", profile_path(profile), method: :get %></p>
-
 
       </div>
       </div>
