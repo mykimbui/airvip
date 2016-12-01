@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
   end
 
   def completed
-    @booking.completed
+    @booking.completed!
     @booking.save
     redirect_to new_profile_review_path(@celeb)
   end

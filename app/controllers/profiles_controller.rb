@@ -22,6 +22,7 @@ class ProfilesController < ApplicationController
 
     @profiles = @profiles.uniq
 
+
     @profiles_a = User.where(latitude: nil, longitude: nil)
     @ok = @profiles + @profiles_a
 
@@ -35,6 +36,8 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id])
     #@alert_message = "You are viewing #{@user.name}"
     @profile_coordinates = { lat: @profile.latitude, lng: @profile.longitude }
+    @reviews = @profile.celeb_reviews
+
   end
 
   def edit

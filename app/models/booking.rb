@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :renter, class_name: 'User', foreign_key: 'renter_id', optional: true
   belongs_to :celeb, class_name: 'User', foreign_key: 'celeb_id', optional: true
 
+  has_many :reviews
   # validates :renter_id, presence: true
   # validates :celeb_id, presence: true
   # validates :price, presence: true
@@ -21,7 +22,7 @@ class Booking < ApplicationRecord
     self.status = "Cancelled"
   end
 
-  def completed
+  def completed!
     self.status = "Completed"
   end
 end

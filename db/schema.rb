@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130153810) do
+ActiveRecord::Schema.define(version: 20161201131713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,10 @@ ActiveRecord::Schema.define(version: 20161130153810) do
     t.integer  "rating"
     t.integer  "renter_id"
     t.integer  "celeb_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "bookings_id"
+    t.index ["bookings_id"], name: "index_reviews_on_bookings_id", using: :btree
   end
 
   create_table "specialities", force: :cascade do |t|
@@ -105,12 +107,18 @@ ActiveRecord::Schema.define(version: 20161130153810) do
     t.string   "profile_picture"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "facebook_picture_url"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "blocked_days", "users", column: "users_id"
   add_foreign_key "photos", "users", column: "users_id"
+  add_foreign_key "reviews", "bookings", column: "bookings_id"
   add_foreign_key "user_languages", "languages", column: "languages_id"
   add_foreign_key "user_languages", "users", column: "users_id"
 end
