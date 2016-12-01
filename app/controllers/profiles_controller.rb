@@ -12,12 +12,10 @@ class ProfilesController < ApplicationController
     varspec = params[:specialities]
     if varspec != ""
       spec = Speciality.where(name: varspec).uniq
-      if spec.nil?
       user_list = UserSpeciality.where(speciality_id: spec.first.id)
       @profiles = @profiles + user_list.map do |row|
         User.find(row.user_id)
       end
-    end
     else
       @profiles
     end
