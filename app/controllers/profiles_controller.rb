@@ -44,8 +44,8 @@ class ProfilesController < ApplicationController
     # @reviews_renter = @booking.map do |book|
     #     book.reviews
     # end
-   @reviews_celeb = Review.where(celeb_id: @þrofile)
-   @reviews_renter = Review.where(renter_id: @þrofile)
+   @reviews_celeb = Review.where(renter_id: @profile)
+   @reviews_renter = Review.where(celeb_id: @profile)
   end
 
   def edit
