@@ -5,6 +5,10 @@
     <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
     <p>[<%= profile.address %>] 
   </div>
+  
+  <% if profile.role != "Renter" %>
+    <div class="card-user avatar"><%= profile.price_per_day %>€</div>
+  <% end %>
   <%= link_to "", profile_path(profile), class: "card-link" %>
 </div>
 
