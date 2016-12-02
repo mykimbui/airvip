@@ -12,7 +12,9 @@
   <%#= link_to "Decline", decline_dashboard_booking_path(renter_booking.id), class: "btn btn-primary" %>
   <%= link_to "Cancel", cancel_dashboard_booking_path(renter_booking.id), class: "btn btn-primary" %>
   <% if DateTime.strptime(renter_booking.date, '%m/%d/%Y') < DateTime.now  %>
-    <%= link_to "Review", new_profile_booking_review_path(current_user, renter_booking.id), class: "btn btn-primary" %>
+
+    <%= link_to "Review", new_profile_booking_review_path(renter_booking.celeb_id, renter_booking), class: "btn btn-primary" %>
+
   <% end %>
   <%#= link_to "Delete", profile_booking_path(booking.id), class: "btn btn-danger" %>
 </div>

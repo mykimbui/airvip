@@ -24,10 +24,21 @@
 <ul>
 <%@reviews_renter.each do |rev| %>
  <li>
- <b><%= User.find(rev.renter_id).first_name%>
- <%= User.find(rev.renter_id).last_name%>:</b>
-  <%= rev.content%>
-  <%= rev.rating%>
+<b>
+<% if rev.renter_id.nil? %>
+<%= User.find(rev.celeb_id).first_name%>
+   <%= User.find(rev.celeb_id).last_name%>:</b>
+
+<%else %>
+<%= User.find(rev.renter_id).first_name%>
+   <%= User.find(rev.renter_id).last_name%>:</b>
+  <% end %>
+
+
+
+    <%= rev.content%>
+    <%= rev.rating%>
+
   <% end %>
 </li>
 </ul>
