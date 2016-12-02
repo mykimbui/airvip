@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:destroy, :accept, :cancel, :decline]
+  before_action :set_booking, only: [:destroy, :accept, :cancel, :decline, :completed]
   before_action :set_celeb, only: [:new, :create]
   def new
     @booking = Booking.new
