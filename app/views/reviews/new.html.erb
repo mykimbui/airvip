@@ -4,7 +4,6 @@
 
 <%= simple_form_for [@profile, @review], url: profile_booking_reviews_path do |f| %>
 
-
   <%= f.text_field :content %>
   <%= f.text_field :rating %>
   <%= f.submit "add a review", class: "btn btn-primary" %>
