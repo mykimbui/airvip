@@ -7,7 +7,7 @@
   <%= f.input :address, placeholder: "Your address."%>
   <%= f.input :email, placeholder: "Your e-mail."%>
   <%= f.input :phone_number, placeholder: "Your phone number."%>
-  <%= f.input :price_per_day, placeholder: "Your price per day."%>
+  <%= f.input :price_per_day, placeholder: "Your price per day." if @profile.role != "Renter" %>
   <%= f.input :role, collection: User::ROLES, prompt: "Choose one"  %>
   <%= f.input :profile_picture %>
   <%= f.input :profile_picture_cache, as: :hidden %>
@@ -15,8 +15,10 @@
 
 <% end %>
 
-<h2>Add specialties</h2>
-<%= simple_form_for UserSpeciality.new , url: profile_new_speciality_path(@profile), method: :post do |f| %>
-  <%= f.association :speciality %>
-  <%= f.submit %>
+<% if @profile.role != "Renter" %>
+  <h2>Add specialties</h2>
+  <%= simple_form_for UserSpeciality.new , url: profile_new_speciality_path(@profile), method: :post do |f| %>
+    <%= f.association :speciality %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
