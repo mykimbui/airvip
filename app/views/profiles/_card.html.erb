@@ -2,9 +2,11 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= profile.profile_picture.present? ? cl_image_path(profile.profile_picture) : cl_image_path('https://unsplash.it/500/400') %>');">
   <div class="card-category"><%= profile.role %></div>
   <div class="card-description">
-    <h2><%= profile.first_name.capitalize %><%= profile.last_name.capitalize %></h2>
+    <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
     <p>[<%= profile.address %>] 
   </div>
+  
+    <div class="card-user avatar"><%= profile.price_per_day %>€</div>
   <%= link_to "", profile_path(profile), class: "card-link" %>
 </div>
 
