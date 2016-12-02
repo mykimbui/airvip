@@ -23,14 +23,14 @@
     <% @selected_celeb.each do |user| %>
 
     <div class="col-xs-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('user.profile_picture');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= user.profile_picture.present? ? cl_image_path(user.profile_picture) : cl_image_path('https://unsplash.it/500/400') %>');">
         <div class="card-description">
 
           <h2><%= user.first_name %> <%= user.last_name %></h2>
           <p><%= user.role %>
-          <p><%= link_to "show",  profile_path(user), method: :get %></p>
 
         </div>
+        <%= link_to "", profile_path(user), class: "card-link" %>
       </div>
     </div>
 
@@ -46,15 +46,14 @@
     <% @selected_lookalike.each do |user| %>
 
     <div class="col-xs-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('user.profile_picture');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= user.profile_picture.present? ? cl_image_path(user.profile_picture) : cl_image_path('https://unsplash.it/500/400') %>');">
         <div class="card-description">
 
           <h2><%= user.first_name %> <%= user.last_name %></h2>
           <p><%= user.role %> </p>
-          <p><%= link_to "show",  profile_path(user), method: :get %></p>
-
 
         </div>
+        <%= link_to "", profile_path(user), class: "card-link" %>
       </div>
     </div>
 
