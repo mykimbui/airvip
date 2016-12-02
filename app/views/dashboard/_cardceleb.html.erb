@@ -10,8 +10,14 @@
 <div>
   <%= link_to "Approve", accept_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
   <%= link_to "Decline", decline_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
-  <% if DateTime.strptime(@renter_booking.date, '%m/%d/%Y') < DateTime.now  %>
-  <%= link_to "Review", new_profile_booking_review_path(current_user, celeb_booking.id), class: "btn btn-primary" %>
+  <% if @renter_booking == nil  %>
+  <% else DateTime.strptime(@renter_booking.date, '%m/%d/%Y') < DateTime.now  %>
+
+
+  <%= link_to "Review", new_profile_booking_review_path( celeb_booking.renter_id, celeb_booking), class: "btn btn-primary" %>
+
+
+
   <% end %>
   <%#= link_to "Cancel", cancel_dashboard_booking_path(celeb_booking.id), class: "btn btn-primary" %>
   <%#= link_to "Delete", profile_booking_path(booking.id), class: "btn btn-danger" %>

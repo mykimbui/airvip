@@ -23,20 +23,23 @@
       </p>
       <% end %>
       <p><%= link_to "Book", new_profile_booking_path(@profile), class: "btn btn-primary",  method: :get if @profile != current_user %></p>
-
       <p><%= link_to "Edit", edit_profile_path(@profile), class: "btn btn-primary", method: :get if @profile == current_user%></p>
     </div>
+<ul>
+<%@reviews_renter.each do |rev| %>
+ <li>
+<b>
+<% if rev.renter_id.nil? %>
+<%= User.find(rev.celeb_id).first_name%>
+   <%= User.find(rev.celeb_id).last_name%>:</b>
 
+<%else %>
+<%= User.find(rev.renter_id).first_name%>
+   <%= User.find(rev.renter_id).last_name%>:</b>
+  <% end %>
+    <%= rev.content%>
+    <%= rev.rating%>
 
-    <ul>
-      <%@reviews_renter.each do |rev| %>
-      <li>
-       <b><%= User.find(rev.renter_id).first_name%>
-         <%= User.find(rev.renter_id).last_name%>:</b>
-         <%= rev.content%>
-         <%= rev.rating%>
-         <% end %>
-       </li>
-     </ul>
-
-     <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|#{@profile.address}" %>
+  <% end %>
+</li>
+</ul>

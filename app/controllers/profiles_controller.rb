@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
+    @profiles = nil
     varfirst = params[:first_name]
     @profiles = User.where(first_name: varfirst)
 

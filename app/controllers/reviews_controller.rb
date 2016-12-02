@@ -7,14 +7,19 @@ class ReviewsController < ApplicationController
   end
 
   def create
+
     @profile = User.find(params[:profile_id])
     @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @profile.role == 'Celebrity' ? @review.celeb = @profile : @review.renter = @profile
-    if @review.save
-      redirect_to profile_path(@review.celeb)
+    @review.renter = User.find(@booking.renter_id)
+    @review.celeb = User.find(@booking.celeb_id)
+
+     if @review.save
+             redirect_to profile_path(@profile)
+
     else
-      render "profiles/show"
+      render :new
+
     end
   end
 
