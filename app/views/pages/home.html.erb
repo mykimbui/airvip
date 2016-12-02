@@ -2,18 +2,22 @@
   <div class="banner-content">
     <h1>Rent celebrities for your own event!</h1>
     <p> or their lookalikes </p>
-    <%= form_tag '/profiles', method: :get do %>
+    <%= form_tag '/profiles', method: :get, class: "form-inline" do %>
     <form class="form-inline">
       <div class="form-group">
-        <div class="input">
-          <%= text_field_tag 'first_name', nil, placeholder: "First Name", class: "form-control" %>
-          <%= text_field_tag 'last_name', nil, placeholder: "Last Name", class: "form-control"  %>
 
-          <%= select_tag "specialities",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality", class: "form-control" %>
-        </div>
-        <%= submit_tag "Submit", class: "btn btn-primary" %>
-        <% end %>
+        <%= text_field_tag 'first_name', nil, placeholder: "First Name", class: "form-control" %>
       </div>
+      <div class="form-group">
+
+        <%= text_field_tag 'last_name', nil, placeholder: "Last Name", class: "form-control"  %>
+      </div>
+      <div class="form-group">
+
+        <%= select_tag "specialities",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality", class: "form-control" %>
+      </div>
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+      <% end %>
     </form>
 
   </div>
