@@ -5,14 +5,16 @@
 
     <div class="col-xs-12 col-sm-6">
       <div class="row">
-        <% @profiles.each do |profile| %>
-          <% if profile.role != "Renter" %>
-            <div class="col-xs-12 col-sm-6">
-              <%= render "card", profile: profile %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+    <% unless @profiles %>
+    <p>No results</p>
+    <% else %>
+  <% @profiles.each do |profile| %>
+      <div class="col-xs-12 col-sm-6">
+        <%= render "card", profile: profile %>
+    </div>
+  <% end %>
+  <% end %>
+        </div>
     </div>
 
     <div class="col-xs-12 col-sm-6" id="map" style="width: 50%; height: 800px;"></div>

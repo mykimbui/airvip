@@ -3,31 +3,29 @@ class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @profiles = nil
-    varfirst = params[:first_name]
-    @profiles = User.where(first_name: varfirst)
-
-    varlast = params[:last_name]
-    @profiles = @profiles + User.where(last_name: varlast)
-
-    varspec = params[:specialities]
-    if varspec != ""
-      spec = Speciality.where(name: varspec).uniq
-      user_list = UserSpeciality.where(speciality_id: spec.first.id)
-      @profiles = @profiles + user_list.map do |row|
-        User.find(row.user_id)
-      end
+  
+    if params[:first_name] != "" && params[:last_name] != ""
+      @profiles = User.where(first_name: params[:first_name], last_name: params[:last_name])
+    elsif params[:first_name] != ""
+      @profiles = User.where(first_name: params[:first_name])
+    elsif params[:last_name] != ""
+      @profiles = User.where(last_name: params[:last_name])
     else
-      @profiles
+      @profiles = User.all
     end
+      @profiles = @profiles.to_a.uniq
 
-    @profiles = @profiles.uniq
+      
+    unless params[:specialities].empty?
+      @speciality = Speciality.find_by_name(params[:specialities])
+      @profiles = @profiles.select!{ |profile| profile.specialities.include?(@speciality) }
+    end
+    
+    
+#    @profiles_a = User.where.not(latitude: nil, longitude: nil)
+#    @ok = @profiles + @profiles_a
 
-
-    @profiles_a = User.where(latitude: nil, longitude: nil)
-    @ok = @profiles + @profiles_a
-
-    @hash = Gmaps4rails.build_markers(@ok) do |profile_a, marker|
+    @hash = Gmaps4rails.build_markers(@profiles) do |profile_a, marker|
       marker.lat profile_a.latitude
       marker.lng profile_a.longitude
     end
