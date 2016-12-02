@@ -1,24 +1,27 @@
-<h1 class="text-center">Your bookings of celebrities</h1>
 <div class="container">
  <div class="row">
+ <h2>Your bookings</h2>
    <% @renter_bookings.each do |renter_booking| %>
-   <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= render "card", renter_booking: renter_booking %>
+   <div class="col-xs-12">
+     <%= render "product", renter_booking: renter_booking %>
    </div>
    <% end %>
  </div>
  <%#= link_to 'Back', profile_path, class: "btn btn-danger" %>
 </div>
 
-<h1 class="text-center">Booked by</h1>
 <div class="container">
  <div class="row">
+  <h2>Booked by</h2>
+
    <% @celeb_bookings.each do |celeb_booking| %>
-   <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= render "cardceleb", celeb_booking: celeb_booking %>
+   <div class="col-xs-12">
+     <%= render "productceleb", celeb_booking: celeb_booking %>
    </div>
    <% end %>
  </div>
  <%#= link_to 'Back', profile_path, class: "btn btn-danger" %>
 </div>
+
+
 

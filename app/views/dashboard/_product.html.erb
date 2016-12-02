@@ -1,0 +1,20 @@
+<div class="product">
+  <div class='product-upvote'>
+    <div class='product-count'><%= renter_booking.celeb.price_per_day %>€</div>
+  </div>
+  <div class= "product-image hidden-xs">
+  <%= renter_booking.celeb.profile_picture.present? ? cl_image_path(renter_booking.celeb.profile_picture) : cl_image_path('https://unsplash.it/500/400') %>
+</div>
+  <div class='product-body'>
+    <p><%= renter_booking.date %></p>
+    <h4><%= renter_booking.celeb.first_name %><%= " " %><%= renter_booking.celeb.last_name %></h4>
+    <p>[<%= renter_booking.status %>] - <%= renter_booking.content %></p>
+  </div>
+  <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <li><%= link_to "Cancel", cancel_dashboard_booking_path(renter_booking.id), class: "btn btn-danger" %></li>
+    <li><% if DateTime.strptime(renter_booking.date, '%m/%d/%Y') < DateTime.now  %>
+    <%= link_to "Review", new_profile_booking_review_path(current_user, renter_booking.id), class: "btn btn-primary" %>
+  <% end %></li>
+  </ul>
+</div>
+
