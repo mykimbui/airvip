@@ -4,10 +4,10 @@
   <div class="row">
   <% @profiles.each do |profile| %>
     <div class="col-xs-6">
-      <%= render "card", profile: profile %>
-
+      <% if profile.role != "Renter" %>
+        <%= render "card", profile: profile %>
+      <% end %>
   <% end %>
-
     </div>
 
 
