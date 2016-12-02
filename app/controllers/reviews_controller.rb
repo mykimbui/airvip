@@ -12,13 +12,14 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
     @review.renter = User.find(@booking.renter_id)
-      @review.celeb = User.find(@booking.celeb_id)
+    @review.celeb = User.find(@booking.celeb_id)
 
      if @review.save
              redirect_to profile_path(@profile)
 
     else
-      render "profiles/show"
+      render :new
+
     end
   end
 
