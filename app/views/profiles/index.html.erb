@@ -2,14 +2,15 @@
 
 <div class="container">
   <div class="row">
+    <% unless @profiles %>
+    <p>No results</p>
+    <% else %>
   <% @profiles.each do |profile| %>
     <div class="col-xs-6">
-      <% if profile.role != "Renter" %>
         <%= render "card", profile: profile %>
-      <% end %>
-  <% end %>
     </div>
-
+  <% end %>
+  <% end %>
 
   <div class="col-xs-6" id="map" style="width: 50%; height: 300px;"></div>
 
