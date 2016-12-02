@@ -1,18 +1,23 @@
-<h1>Results of your search:</h1>
 
 <div class="container">
   <div class="row">
+  <h3>Results of your search</h3>
+
+    <div class="col-xs-12 col-sm-6">
+      <div class="row">
     <% unless @profiles %>
     <p>No results</p>
     <% else %>
   <% @profiles.each do |profile| %>
-    <div class="col-xs-6">
+      <div class="col-xs-12 col-sm-6">
         <%= render "card", profile: profile %>
     </div>
   <% end %>
   <% end %>
+        </div>
+    </div>
 
-  <div class="col-xs-6" id="map" style="width: 50%; height: 300px;"></div>
+    <div class="col-xs-12 col-sm-6" id="map" style="width: 50%; height: 800px;"></div>
 
     <% content_for(:after_js) do %>
       <%= javascript_tag do %>
@@ -36,6 +41,7 @@
 
   </div>
 </div>
+
 
 
 

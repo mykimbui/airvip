@@ -1,25 +1,27 @@
-<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://bboceansuites.com/wp-content/uploads/2015/05/sunset-beach-chairs-stock-footage.jpg');">
+<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://media.giphy.com/media/l0Hluda00DO60uIFi/source.gif');">
   <div class="banner-content">
-    <h1>WELCOME</h1>
-    <p>Rent celebrities or their lookalikes for your own event!</p>
+    <h1>Rent celebrities for your own event!</h1>
+    <p> or their lookalikes </p>
     <%= form_tag '/profiles', method: :get do %>
-    <%= label_tag 'Search for a VIP' %>
-    <div class="input">
-      <%= text_field_tag 'first_name', nil, placeholder: "First Name" %>
-      <%= text_field_tag 'last_name', nil, placeholder: "Last Name" %>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input">
+          <%= text_field_tag 'first_name', nil, placeholder: "First Name", class: "form-control" %>
+          <%= text_field_tag 'last_name', nil, placeholder: "Last Name", class: "form-control"  %>
 
-      <%= select_tag "specialities",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality" %>
-
-    </div>
-      <%= submit_tag "Submit", class: "btn btn-primary" %>
-    <% end %>
+          <%= select_tag "specialities",options_for_select(['Actor', 'Singer', 'Cook', 'Dancer', 'Writer', 'Entertainer', 'President', 'TA']), prompt: "Select a speciality", class: "form-control" %>
+        </div>
+        <%= submit_tag "Submit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </form>
 
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <h1>Our Celebrity :</h1>
+    <h2>Celebrities</h2>
     <% @selected_celeb.each do |user| %>
 
     <div class="col-xs-4">
@@ -29,36 +31,36 @@
           <h2><%= user.first_name %> <%= user.last_name %></h2>
           <p><%= user.role %>
 
+          </div>
+          <%= link_to "", profile_path(user), class: "card-link" %>
         </div>
-        <%= link_to "", profile_path(user), class: "card-link" %>
       </div>
+
+
+      <% end %>
+
     </div>
-
-
-    <% end %>
-
   </div>
-</div>
 
-<div class="container">
-  <div class="row">
-    <h1>Our Look a Like :</h1>
-    <% @selected_lookalike.each do |user| %>
+  <div class="container">
+    <div class="row">
+      <h2>Lookalikes</h2>
+      <% @selected_lookalike.each do |user| %>
 
-    <div class="col-xs-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= user.profile_picture.present? ? cl_image_path(user.profile_picture) : cl_image_path('https://unsplash.it/500/400') %>');">
-        <div class="card-description">
+      <div class="col-xs-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= user.profile_picture.present? ? cl_image_path(user.profile_picture) : cl_image_path('https://unsplash.it/500/400') %>');">
+          <div class="card-description">
 
-          <h2><%= user.first_name %> <%= user.last_name %></h2>
-          <p><%= user.role %> </p>
+            <h2><%= user.first_name %> <%= user.last_name %></h2>
+            <p><%= user.role %> </p>
 
+          </div>
+          <%= link_to "", profile_path(user), class: "card-link" %>
         </div>
-        <%= link_to "", profile_path(user), class: "card-link" %>
       </div>
+
+      <% end %>
+
     </div>
-
-    <% end %>
-
   </div>
-</div>
 
