@@ -1,11 +1,16 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<h1 class="text-center">Your review to <%= @profile.first_name%> <%= @profile.last_name%> </h1>
 
+<div class="container">
+ <div class="row">
+   <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
 <%= simple_form_for [@profile, @review], url: profile_booking_reviews_path do |f| %>
-
-  <%= f.text_field :content %>
-  <%= f.text_field :rating %>
+<%= f.error_notification%>
+  <%= f.input :content, placeholder: "your review",required: true  %>
+  <%= f.input :rating, collection: [1,2,3,4,5], prompt: "rating?", required: true %>
   <%= f.submit "add a review", class: "btn btn-primary" %>
 <% end %>
+
+</div>
+</div></div>
 
