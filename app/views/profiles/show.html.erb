@@ -24,7 +24,9 @@
 <ul>
 <%@reviews_renter.each do |rev| %>
  <li>
- <%= rev.content%>
+ <b><%= User.find(rev.renter_id).first_name%>
+ <%= User.find(rev.renter_id).last_name%>:</b>
+  <%= rev.content%>
   <%= rev.rating%>
   <% end %>
 </li>
